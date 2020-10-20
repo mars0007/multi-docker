@@ -6,7 +6,7 @@ services:
     - docker
 
 before_install:
-    - docker build -t Mars007/react-test -f ./client/Dockerfile.dev ./client
+    - docker build -t mars007/react-test -f ./client/Dockerfile.dev ./client
 
 script:
     - docker run -e CI=true Mars007/react-test npm test
