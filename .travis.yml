@@ -9,21 +9,21 @@ before_install:
     - docker build -t mars007/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-    - docker run -e CI=true Mars007/react-test npm test
+    - docker run -e CI=true mars007/react-test npm test
 
 after_success:
-    - docker build -t Mars007/multi-client ./client
-    - docker build -t Mars007/multi-nginx ./nginx
-    - docker build -t Mars007/multi-server ./server
-    - docker build -t Mars007/multi-worker ./worker
+    - docker build -t mars007/multi-client ./client
+    - docker build -t mars007/multi-nginx ./nginx
+    - docker build -t mars007/multi-server ./server
+    - docker build -t mars007/multi-worker ./worker
 
     # Log in to docker CLI
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
     # Push to docker hub
-    - docker push Mars007/multi-client
-    - docker push Mars007/multi-nginx
-    - docker push Mars007/multi-server
-    - docker push Mars007/multi-worker
+    - docker push mars007/multi-client
+    - docker push mars007/multi-nginx
+    - docker push mars007/multi-server
+    - docker push mars007/multi-worker
 
 
